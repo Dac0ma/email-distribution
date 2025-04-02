@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Email Sender API
+  version: 1.0.0
+paths:
+  /send:
+    post:
+      summary: Send an email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Email of the recipient
+                content:
+                  type: string
+                  description: Content of the email
+              required:
+                - email
+                - content
+      responses:
+        '200':
+          description: Email sent successfully
+        '400':
+          description: Invalid request
